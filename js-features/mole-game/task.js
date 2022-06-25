@@ -1,16 +1,36 @@
-const dead = document.getElementById('dead')
-const lost = document.getElementById('lost')
+let lost = document.getElementById('lost');
+let dead = document.getElementById('dead');
+let hole = document.getElementsByClassName('hole');
 
-card.onclick = function(event) {
-    let hole = event.target.closest('hole'); 
-  
-    if (!hole) return; 
+for (let ind = 1; ind < hole.length; ind++) {
+    
+  function addHole (ind) {
+    let holeClick = document.getElementById(`hole${ind}`);
+    return holeClick;
+  }
 
-    if (!card.contains('hole hole_has-mole')){
-        dead.innerHTML++;
-    } else{
-        localStorage.innerHTML++;
-    } 
+  let hole = addHole (ind);
+
+  hole.onclick = function() {
+
+  if (hole.className.includes("hole_has-mole") === true) {
+    dead.innerHTML++;
+  } else {
+    lost.innerHTML++; 
+  }
+
+  if (dead.innerHTML == 10) {
+    alert ("Вы победили!");
+    lost.innerHTML = 0;
+    dead.innerHTML = 0;
+  }
   
-    highlight(hole);
+  if (lost.innerHTML == 5) {
+    alert ("Вы проиграли");
+    lost.innerHTML = 0;
+    dead.innerHTML = 0;
+  }
+
   };
+  
+};
