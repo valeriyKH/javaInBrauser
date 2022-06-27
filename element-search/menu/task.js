@@ -1,15 +1,11 @@
-let menu = document.querySelector('.menu__link');
+const menu = document.querySelectorAll('.menu__link');
 
-let back = document.querySelector('body');
-let main = document.querySelector('.main');
-
-menu.onclick = function(){
-    menu.classList.toggle('active');
-    menus.classList.toggle('active');
-    back.classList.toggle('lock');
-}
-
-menu.onclick = function () {
-    main.classList.remove('active');
-    back.classList.toggle('lock');
-}
+menu.forEach((link) => {
+    link.onclick = function () {
+    const parent = link.parentElement;
+    if (parent.querySelector(".menu_sub")) {
+      parent.querySelector(".menu_sub").classList.toggle("menu_active");
+      return false;
+    }
+  };
+});

@@ -1,25 +1,38 @@
-let numb = document.getElementById('modal_main')
-let number = document.getElementById('modal_success') 
+const modalOne = document.getElementById('modal_main');
+const modalTwo = document.getElementById('modal_success');
+const btn = document.querySelector('.show-success');
+const closesmodalOne = modalOne.querySelector('.modal__close');
+const closesmodalTwo = modalTwo.querySelector('.modal__close');
 
-numb.onclick =function myFunction() {
-    numb.style.display = "none";
-}
+modalOne.classList.add('modal_active');
 
-number.onclick = function mySecondFunction () {
-    number.style.display ="none";
+closesmodalOne.onclick = function () {
+    modalOne.classList.remove('modal_active');
+};
+
+closesmodalTwo.onclick = function () {
+    modalTwo.classList.remove('modal_active');
+};
+
+btn.onclick = function () {
+    modalOne.classList.remove('modal_active');
+    modalTwo.classList.add('modal_active');
+
+    const openModalTwo = document.querySelector(".btn_success");
     
-}
-
-numb.addEventListener("click", myFunction);
-numb.addEventListener("click", mySecondFunction);
-
-let closes = document.getElementsByClassName('modal__close')
-let modal = document.getElementsByClassName('modal_active')
+    openModalTwo.onclick = function () {
+        modalTwo.classList.remove('modal_active');
+    };  
+}  
 
 
-closes.onclikc = function () {
-    modal.remove()
-}
 
 
     
+
+
+
+
+
+
+
